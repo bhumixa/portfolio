@@ -5,19 +5,21 @@ const bodyParser = require("body-parser")
 const port = 3000;
 const mongoose = require("mongoose");
 
-app.use(bodyParser.json()) //for application json
-app.use(bodyParser.urlencoded()) // for form data
+const routes = require("./routes");
+
+app.use(express.json()); //for application json
 app.use(cors());
 
-app.get('/', (req, res) =>{
-    res.json({
-        'msg':'yes'
-    })
-})
+app.use('/api', routes);
+
+
 
 async function connectDb() {
     try {
-      await mongoose.connect("mongodb+srv://bhumipatel2512:QNPIB9u3gsuxB8n0@cluster0.liuqayp.mongodb.net/e-comm-store-db?retryWrites=true&w=majority&appName=Cluster0");
+     await mongoose.connect('mongodb://localhost:27017/ecom-store', {
+       useNewUrlParser: true,
+       useUnifiedTopology: true,
+     });
       console.log("✅ MongoDB connected");
     } catch (err) {
       console.error("❌ MongoDB connection error:", err);
@@ -29,6 +31,8 @@ connectDb();
 app.listen(port, ()=>{
     console.log('server running on '+port)
 })
+
+module.exports = app;
 
 
 
