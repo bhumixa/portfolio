@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Category } from '../../types/category';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class CategoryService {
   constructor() {}
 
   getCategories() {
-    return this.http.get('http://localhost:3000/api/category');
+    return this.http.get<Category[]>('http://localhost:3000/api/category');
   }
 
   addCategory(requestData: any) {
@@ -32,6 +33,8 @@ export class CategoryService {
   }
 
   getCategoryById(categoryId: any) {
-    return this.http.get(`http://localhost:3000/api/category/${categoryId}`);
+    return this.http.get<Category>(
+      `http://localhost:3000/api/category/${categoryId}`
+    );
   }
 }

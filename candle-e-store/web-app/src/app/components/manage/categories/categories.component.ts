@@ -13,11 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { CategoryService } from '../../services/category.service';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
-
-export interface CategoriesData {
-  id: string;
-  name: string;
-}
+import { Category } from '../../../types/category';
 
 @Component({
   selector: 'app-categories',
@@ -36,7 +32,7 @@ export interface CategoriesData {
 })
 export class CategoriesComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = ['id', 'name', 'action'];
-  dataSource: MatTableDataSource<CategoriesData>;
+  dataSource: MatTableDataSource<Category>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -51,7 +47,7 @@ export class CategoriesComponent implements AfterViewInit, OnInit {
 
   getCategories() {
     this.categoryService.getCategories().subscribe((res: any) => {
-      this.dataSource = res.data;
+      this.dataSource.data = res.data;
     });
   }
 
@@ -60,9 +56,15 @@ export class CategoriesComponent implements AfterViewInit, OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  applyFilter(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    const filterValue = inputElement.value.trim().toLowerCase();
+
+    // Optionally set custom filterPredicate here if needed
+    // this.dataSource.filterPredicate = (data: YourType, filter: string) =>
+    //   data.name.toLowerCase().includes(filter);
+
+    this.dataSource.filter = filterValue;
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();

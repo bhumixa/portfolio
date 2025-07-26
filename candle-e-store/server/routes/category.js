@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Category = require("../database/category");
-const { route } = require("./category");
+
 const {
   addCategory,
   updateCategory,
