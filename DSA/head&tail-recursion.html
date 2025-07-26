@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Head and Tail Recursion</title>
+    <script>
+     function callFn(x){
+      if(x>0){
+       callFn(x-1);
+      }
+      console.log(x)
+
+      debugger
+     }
+     let data = 5;
+     callFn(data)
+      
+    </script>
+  </head>
+  <body></body>
+</html>

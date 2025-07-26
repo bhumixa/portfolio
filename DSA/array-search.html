@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Array Searching</title>
+    <script>
+      function getElement() {
+        let data = [78, 45, 30, 1, 10, 7, 21, 36, 89];
+        let newEl = document.getElementById('element').value;
+        let position = -1;        
+        document.write(`${data} <br/> `);
+
+        for(i=0; i<data.length; i++){
+         if(data[i]==newEl){
+          position = i
+          break;
+         }
+        }
+
+        if(position >=0){
+        document.write(`${newEl} found at position ${position}`);
+
+        }else{
+        document.write(`${newEl} not found `);
+
+        }
+      }
+
+     
+    </script>
+  </head>
+  <body>
+    <input type="text" id="element" placeholder="Enter Element" />
+    <button onclick="getElement()">Search</button>
+  </body>
+</html>

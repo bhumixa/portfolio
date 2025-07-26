@@ -7,6 +7,7 @@ const {
   updateCategory,
   deleteCategory,
   getAllCategory,
+  getCategoryById,
 } = require('../handlers/category-handler.js');
 
 // create new category 
@@ -16,7 +17,7 @@ router.post('/create', async (req, res) => {
  }
    try {
      let addRes = addCategory(req.body.name);
-     res.status(400).send({
+     res.status(200).send({
        message: 'Category created successfully.',
        data: addRes,
      });
@@ -38,7 +39,7 @@ router.put('/:id', async (req, res) => {
      res.status(404).send('CategoryId is missing');
    }
   updateCategory(categoryId, name);
-   res.status(400).send({ message: 'Category Updated'});
+   res.status(200).send({ message: 'Category Updated' });
   
  } catch (err) {
    console.log(err);
@@ -55,7 +56,7 @@ router.delete('/:id', async (req, res) => {
       res.status(404).send('CategoryId is missing');
     }
     deleteCategory(categoryId);
-    res.status(400).send({ message: 'Category Deleted' });
+    res.status(200).send({ message: 'Category Deleted' });
   } catch (err) {
     console.log(err);
     res.status(500).send('Internal Server Errror');
@@ -67,11 +68,22 @@ router.get('', async (req, res) => {
  try {
   let categories = await getAllCategory()
   console.log(categories);
-  res.status(400).send({message: 'Categories fetched',  "data": categories });
+  res.status(200).send({message: 'Categories fetched',  "data": categories });
  } catch (err) {
   console.log(err);
   res.status(500).send("Internal Server Error.")
  }
+})
+
+router.get('/:id', async (req, res) => {
+  const categoryId = req.params.id;
+  try {
+    let category = await getCategoryById(categoryId);
+    res.status(200).send({ message: 'Category fetched', data: category });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send('Internal Server Error.');
+  }
 })
 
 

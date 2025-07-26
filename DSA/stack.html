@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Stack</title>
+    <script>
+      let data = [45];
+      let dataLength = data.length;
+      let max = 5;
+
+      function push(val) {
+        if (dataLength < max) {
+          data[dataLength] = val;
+          dataLength++;
+        } 
+      }
+
+      function pop() {
+       if(dataLength <=0){
+        alert('stack alraedy empty')
+       }else{
+        data.length = dataLength-1;
+        dataLength--;
+       }
+      }
+
+      push(50);
+      pop()
+      push(80);
+      
+      push(56);
+      
+      push(5);
+      push(7);
+      push(23);
+     // pop()
+      console.log(data);
+    </script>
+  </head>
+  <body></body>
+</html>

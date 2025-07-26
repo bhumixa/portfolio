@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Array Sorting Using For loop</title>
+    <script>
+      function reverse() {
+        let input = document.getElementById('input').value;
+        console.log(input);
+        let str = input.split('');
+        let currentIndex;
+
+        //simple will be :
+        // let string  = input.split("").reverse().join("")
+        // console.log(string);
+        reverseString(str, 0, str.length - 1);
+      }
+
+      function reverseString(string, start, end) {
+        if (start < end) {
+          let temp = string[start];
+          string[start] = string[end];
+          string[end] = temp;
+          reverseString(string, start + 1, end - 1);
+        }
+        let rvString = string.join('');
+        document.getElementById(
+          'output'
+        ).innerHTML = `Reverse String : ${rvString}`;
+      }
+    </script>
+  </head>
+  <body>
+    <input type="text" id="input" />
+    <button onclick="reverse()">Reverse</button>
+    <div id="output"></div>
+  </body>
+</html>

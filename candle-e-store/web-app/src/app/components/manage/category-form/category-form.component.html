@@ -1,0 +1,23 @@
+<div class="flex flex-col items-center px-40 mt-10">
+  <h1>Add New Category</h1>
+  <form [formGroup]="fbgroup" (ngSubmit)="onSubmit()" class="shadow-sm w-96 p-4">
+  <div class="flex flex-wrap">
+    <div class="w-full gap-4">
+      <mat-form-field class="w-full">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name" />
+      </mat-form-field>
+    </div>
+    <div class="w-full flex justify-center">
+      <button mat-raised-button color="primary" type="submit">
+        @if(isEdit){
+          Update
+        }
+        @else {
+          Add
+        }
+      </button>
+    </div>
+  </div>
+</form>
+</div>

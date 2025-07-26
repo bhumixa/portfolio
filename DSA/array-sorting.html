@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Array Sorting Using For loop</title>
+    <script>
+      const numbers = [42, 7, 13, 89, 23, 5, 77, 34];
+
+      for (let i = 0; i < numbers.length; i++) {        
+        for (let j = 0; j < numbers.length; j++) {
+          let temp = numbers[j];
+          if(numbers[j]>numbers[j+1]){
+            numbers[j] = numbers [j+1];
+            numbers[j+1] = temp
+          }
+        }
+      }
+      console.log(numbers);
+    </script>
+  </head>
+  <body></body>
+</html>

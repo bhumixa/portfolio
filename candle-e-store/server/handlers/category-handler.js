@@ -23,6 +23,11 @@ async function deleteCategory(categoryId) {
   return;
 }
 
+async function getCategoryById(categoryId) {
+  let categoryData = await Category.findById(categoryId);
+  return categoryData;
+}
+
 async function getAllCategory() {
   let collection = await Category.find();
   return collection;
@@ -32,5 +37,6 @@ module.exports = {
   addCategory,
   updateCategory,
   deleteCategory,
-  getAllCategory
+  getAllCategory,
+  getCategoryById,
 };

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Reverse Array Recursion</title>
+    <script>
+      let data = [30, 45, 48, 78, 85, 25, 30, 77, 45];
+      function reverseArray(array, startingIndex, endingIndex) {
+        if (startingIndex < endingIndex) {
+          let temp = array[startingIndex];
+          array[startingIndex] = array[endingIndex];
+          array[endingIndex] = temp;
+          reverseArray(array, startingIndex + 1, endingIndex - 1);
+        }
+      }
+      reverseArray(data, 0, data.length - 1);
+      console.log(data);
+
+      //direct function without loop
+      let i = data.reverse();
+      console.log(i);
+    </script>
+  </head>
+  <body></body>
+</html>

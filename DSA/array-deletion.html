@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Array Deleting</title>
+    <script>
+      function getElement() {
+        let data = [78,45,30,1,10,7,21,36,89];
+
+        let position = document.getElementById('position').value;
+        if (!position) {
+          document.write('Give inputs');
+          return;
+        }
+        position = parseInt(position);
+        document.write(`${data} <br/> position ${position}   <br/>`);
+
+        for (let i=position; i<data.length-1; i++) {
+         
+            data[i]=data[i+1];
+          
+          
+        }
+       data.length = data.length - 1
+       document.write(`${data}`);
+      }
+
+      //splice use to insert the element in javascript
+      // let items = [45, 89, 47, 21, 63, 55, 22];
+      // document.write(`${items} <br/>`);
+      // items.splice(5, 0, 2000);
+      // document.write(`${items} <br/>`);
+    </script>
+  </head>
+  <body>
+    <input type="text" id="position" placeholder="Enter Position" />
+    <button onclick="getElement()">Delete</button>
+  </body>
+</html>

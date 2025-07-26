@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Array Inserting</title>
+    <script>
+      function getElement() {
+        let data = [78, 45, 30, 1, 10, 7, 21, 36, 89];
+        let newEl = document.getElementById('element').value;
+        let position = document.getElementById('position').value;
+        if (!newEl && !position) {
+          document.write('Give inputs');
+          return;
+        }
+        document.write(`${data} <br/> `);
+
+        for (let i = data.length - 1; i >= 0; i--) {
+          if (i >= position) {
+            data[i + 1] = data[i];
+            if (i == position) {
+              data[i] = newEl;
+            }
+          }
+        }
+        document.write(`${data}`);
+      }
+
+      //splice use to insert the element in javascript
+      let items = [45, 89, 47, 21, 63, 55, 22];
+      document.write(`${items} <br/>`);
+      items.splice(5, 0, 2000);
+      document.write(`${items} <br/>`);
+    </script>
+  </head>
+  <body>
+    <input type="text" id="element" placeholder="Enter Element" />
+    <input type="text" id="position" placeholder="Enter Position" />
+    <button onclick="getElement()">Insert</button>
+  </body>
+</html>
